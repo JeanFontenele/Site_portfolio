@@ -31,36 +31,67 @@ export default function Secoes({ sectionsRef }){
 
     useEffect(()=>{
         gsap.registerPlugin(ScrollTrigger)
-        gsap.to(targetRef.current, {
-            x: 0,
-            opacity: 1,
-            scrollTrigger:{
-                trigger: targetRef.current,
-                //markers: true,
-                start: "top 200px",
-                end: "bottom 800px",
-                scrub: true
-            }
-        });
+        if(window.innerWidth > 500){
+            gsap.to(targetRef.current, {
+                x: 0,
+                opacity: 1,
+                scrollTrigger:{
+                    trigger: targetRef.current,
+                    //markers: true,
+                    start: "top 200px",
+                    end: "bottom 800px",
+                    scrub: true
+                }
+            });
+        }else if(window.innerWidth <= 500){
+            gsap.to(targetRef.current, {
+                x: 0,
+                opacity: 1,
+                scrollTrigger:{
+                    trigger: targetRef.current,
+                    //markers: true,
+                    start: "top 200px",
+                    end: "bottom 500px",
+                    scrub: false
+                }
+            });
+        }
 
         return ()=> {
             gsap.killTweensOf(targetRef.current)
         }
+            //continuar ajustando a animação tanto no gsap quanto no css para ser mais rápida numa tela menor
+            //dica: deixei o scrub false e precisar centralizar os elementos, ajustar o translate para os demais elementos da body para ser mais rápido
     },[])
+    console.log(window.innerWidth)
 
     useEffect(()=>{
         gsap.registerPlugin(ScrollTrigger)
-        gsap.to(targetRef2.current, {
-            x: 0,
-            opacity: 1,
-            scrollTrigger:{
-                trigger: targetRef2.current,
-                //markers: true,
-                start: "top 200px",
-                end: "bottom 700px",
-                scrub: true
-            }
-        });
+        if(window.innerWidth > 500){
+            gsap.to(targetRef2.current, {
+                x: 0,
+                opacity: 1,
+                scrollTrigger:{
+                    trigger: targetRef2.current,
+                    //markers: true,
+                    start: "top 200px",
+                    end: "bottom 700px",
+                    scrub: true
+                }
+            });
+        }else{
+            gsap.to(targetRef2.current, {
+                x: 0,
+                opacity: 1,
+                scrollTrigger:{
+                    trigger: targetRef2.current,
+                    //markers: true,
+                    start: "top 200px",
+                    end: "bottom 700px",
+                    scrub: false
+                }
+            });
+        }
 
         return ()=> {
             gsap.killTweensOf(targetRef2.current)
@@ -77,10 +108,10 @@ export default function Secoes({ sectionsRef }){
                 //markers: true,
                 start: "top 500px",
                 end: "bottom 700px",
-                scrub: true
+                scrub: false
             }
         });
-
+        
         return ()=> {
             gsap.killTweensOf(targetRef3.current)
         }
@@ -90,7 +121,7 @@ export default function Secoes({ sectionsRef }){
     const modalImages = useRef(null)
     const [viewProjeto, setViewProjeto] = useState('')
     const projeto = viewProjeto    
-    console.log(projeto)
+    //console.log(projeto)
 
 
     

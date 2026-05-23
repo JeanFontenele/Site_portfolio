@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import './components.css'
-import perfil from '../assets/images/perfil.jpg'
+import perfil from '../assets/images/Foto_perfil.jpeg'
 
 export default function Header({ onNavigate }) {
   const [open, setOpen] = useState(false)
@@ -8,6 +8,7 @@ export default function Header({ onNavigate }) {
   const menuNav = useRef(null)
 
   useEffect(()=>{
+    //resolver questão do menu nav deslizante que não funciona em telas menores de 500px
     if(iconeMenu.current){
       iconeMenu.current.addEventListener('click',()=>{
         let menu = menuNav.current
@@ -18,7 +19,7 @@ export default function Header({ onNavigate }) {
         }else{
           menu.style.opacity = '0'
           menu.style.left = '0'
-          menu.style.transform = "translateX(-1000px)"
+          menu.style.transform = "translateX(-100%)"
         }
       })
     }
@@ -40,7 +41,7 @@ export default function Header({ onNavigate }) {
                 <li><a title='contato' onClick={() => onNavigate("contato")} href="#contact">Contato</a></li>
               </ul>
 
-              <div style={{width:'50%',textAlign:'right',marginTop:'-10px'}}>
+              <div className='box-hamburguer'>
                 <button ref={iconeMenu} className={`hamburger ${open ? 'open' : 'close'}`} onClick={() => setOpen(!open)} aria-label="Menu">
                   <span></span>
                   <span></span>

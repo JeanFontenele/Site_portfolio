@@ -33,6 +33,7 @@ export default function GallerySection(props){
     useEffect(() => {
         if (projeto.projeto === 'projeto1' || projeto.projeto === 'projeto2' || projeto.projeto === 'projeto3') {
             setOpen(true);
+            //document.body.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
             if(projeto.projeto === 'projeto3'){
                 images = imagesProjeto3
             }
