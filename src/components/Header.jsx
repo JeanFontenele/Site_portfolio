@@ -1,25 +1,32 @@
 import { useState, useRef, useEffect } from 'react'
 import './components.css'
 import perfil from '../assets/images/Foto_perfil.jpeg'
+import video_header from '../assets/video/video_header.mp4'
 
 export default function Header({ onNavigate }) {
   const [open, setOpen] = useState(false)
   const iconeMenu = useRef(null)
   const menuNav = useRef(null)
+  const conteudoHeader = useRef(null);
 
   useEffect(()=>{
     //resolver questão do menu nav deslizante que não funciona em telas menores de 500px
     if(iconeMenu.current){
       iconeMenu.current.addEventListener('click',()=>{
-        let menu = menuNav.current
-        if(!open){
-          menu.style.opacity = '1'
-          menu.style.left = '50%'
-          menu.style.transform = "translateX(-50%)"
-        }else{
-          menu.style.opacity = '0'
-          menu.style.left = '0'
-          menu.style.transform = "translateX(-100%)"
+        if(conteudoHeader.current){
+          let conteudo = conteudoHeader.current   
+          let menu = menuNav.current
+          if(!open){
+            menu.style.opacity = '1'
+            menu.style.left = '50%'
+            menu.style.transform = "translateX(-50%)"
+            conteudo.classList.remove('conteudoHeader-show')
+          }else{
+            menu.style.opacity = '0'
+            menu.style.left = '0'
+            menu.style.transform = "translateX(-100%)"
+            conteudo.classList.add('conteudoHeader-show')
+          }
         }
       })
     }
@@ -30,7 +37,7 @@ export default function Header({ onNavigate }) {
   return (
     <div>
       <header className="hero-header">
-        <div className='layer'>
+        <div className='layer'></div>{/*layer*/}
           <nav className="nav">
             <div style={{display:'flex',gap:'24px'}} className='container'>
               <div style={{width:'50%'}} className="brand">Portfolio</div>
@@ -51,8 +58,14 @@ export default function Header({ onNavigate }) {
             </div>{/*container*/}
           </nav>
 
+          
+          <video className='box-video' playsInline autoPlay loop muted>
+            <source src={video_header}/>
+          </video>
+          
+
           <div className='container'>
-            <div className="hero-content">
+            <div ref={conteudoHeader} className="hero-content conteudoHeader-show">
               <div className="hero-left">
                 <h1>Jean Fontenele <br />Desenvolvedor Full-Stack</h1>
                 <br />
@@ -74,7 +87,6 @@ export default function Header({ onNavigate }) {
               </div>
             </div>
           </div>{/*container*/}
-        </div>{/*layer*/}
       </header>
     </div>
   )
