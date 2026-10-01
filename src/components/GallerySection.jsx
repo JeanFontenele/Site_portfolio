@@ -1,5 +1,7 @@
-import { useState, useEffect, useRef } from 'react'
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect, useCallback } from 'react'
+import { createPortal } from 'react-dom'
+import { motion, AnimatePresence } from 'framer-motion'
+
 import dashboard from '../assets/images/secao_meus_projetos/dashboard.png'
 import dashboard2 from '../assets/images/secao_meus_projetos/dashboard2.png'
 import dashboard3 from '../assets/images/secao_meus_projetos/dashboard3.png'
@@ -17,131 +19,290 @@ import site_arquitetura5 from '../assets/images/secao_meus_projetos/site_arquite
 import site_arquitetura6 from '../assets/images/secao_meus_projetos/site_arquitetura6.png'
 import site_arquitetura7 from '../assets/images/secao_meus_projetos/site_arquitetura7.png'
 
+const projectData = {
+  projeto1: {
+    id: 'projeto1',
+    title: 'Projeto Portal de Notícias',
+    description: 'Portal de notícias com Node.js, Express e front-end responsivo',
+    images: [
+      portal_de_noticias,
+      portal_de_noticias2,
+      portal_de_noticias3,
+      portal_de_noticias4,
+      portal_de_noticias5,
+      portal_de_noticias6,
+    ],
+  },
+  projeto2: {
+    id: 'projeto2',
+    title: 'Projeto Site de Arquitetura e Design',
+    description: 'Site comercial institucional para escritório de arquitetura e interiores',
+    images: [
+      site_arquitetura,
+      site_arquitetura2,
+      site_arquitetura3,
+      site_arquitetura4,
+      site_arquitetura5,
+      site_arquitetura6,
+      site_arquitetura7,
+    ],
+  },
+  projeto3: {
+    id: 'projeto3',
+    title: 'Projeto Dashboard Financeiro',
+    description: 'Dashboard interativo para gestão e administração financeira em PHP',
+    images: [
+      dashboard,
+      dashboard2,
+      dashboard3,
+    ],
+  },
+};
 
-const imagesProjeto3 = [dashboard,dashboard2,dashboard3]
-const imagesProjeto1 = [portal_de_noticias,portal_de_noticias2,portal_de_noticias3,portal_de_noticias4,portal_de_noticias5,portal_de_noticias6]
-const imagesProjeto2 = [site_arquitetura,site_arquitetura2,site_arquitetura3,site_arquitetura4,site_arquitetura5,site_arquitetura6,site_arquitetura7]
-let images = []
+const slideVariants = {
+  enter: (direction) => ({
+    x: direction > 0 ? 350 : direction < 0 ? -350 : 0,
+    opacity: 0,
+    scale: 0.94,
+    filter: 'blur(4px)',
+  }),
+  center: {
+    zIndex: 1,
+    x: 0,
+    opacity: 1,
+    scale: 1,
+    filter: 'blur(0px)',
+    transition: {
+      x: { type: 'spring', stiffness: 350, damping: 32, mass: 0.8 },
+      opacity: { duration: 0.28, ease: 'easeOut' },
+      scale: { duration: 0.28, ease: 'easeOut' },
+      filter: { duration: 0.2 },
+    },
+  },
+  exit: (direction) => ({
+    zIndex: 0,
+    x: direction > 0 ? -350 : direction < 0 ? 350 : 0,
+    opacity: 0,
+    scale: 0.94,
+    filter: 'blur(4px)',
+    transition: {
+      x: { type: 'spring', stiffness: 350, damping: 32, mass: 0.8 },
+      opacity: { duration: 0.22, ease: 'easeIn' },
+      scale: { duration: 0.22, ease: 'easeIn' },
+      filter: { duration: 0.18 },
+    },
+  }),
+};
 
-export default function GallerySection(props){
-    const [open, setOpen] = useState(false);
-    const [index, setIndex] = useState(0);
-    const galeria = useRef(null)
-    
-    const projeto = props
-    
-    useEffect(() => {
-        if (projeto.projeto === 'projeto1' || projeto.projeto === 'projeto2' || projeto.projeto === 'projeto3') {
-            setOpen(true);
-            //document.body.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
-            if(projeto.projeto === 'projeto3'){
-                images = imagesProjeto3
-            }
-            if(projeto.projeto === 'projeto1'){
-                images = imagesProjeto1
-            }
-            if(projeto.projeto === 'projeto2'){
-                images = imagesProjeto2
-            }
-        }
-        
-    }, [projeto]);
-    
+const swipeConfidenceThreshold = 10000;
+const swipePower = (offset, velocity) => Math.abs(offset) * velocity;
 
-    const nextImage = () => {
-        setIndex((prev) => (prev + 1) % images.length);
+export default function GallerySection(props) {
+  const { projeto, onClose } = props;
+  const [open, setOpen] = useState(false);
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [[page, direction], setPage] = useState([0, 0]);
+
+  // Suporta tanto prop como string quanto como objeto { projeto: '...' }
+  const projectKey = typeof projeto === 'object' && projeto !== null
+    ? (projeto.projeto || projeto.id || '')
+    : (projeto || '');
+
+  useEffect(() => {
+    if (projectKey && projectData[projectKey]) {
+      setSelectedProject(projectKey);
+      setPage([0, 0]);
+      setOpen(true);
+    }
+  }, [projectKey]);
+
+  const handleClose = useCallback(() => {
+    setOpen(false);
+    if (onClose) {
+      onClose();
+    }
+  }, [onClose]);
+
+  const currentProject = selectedProject ? projectData[selectedProject] : null;
+  const images = currentProject?.images || [];
+  const numImages = images.length;
+
+  const imageIndex = numImages > 0
+    ? ((page % numImages) + numImages) % numImages
+    : 0;
+
+  const nextImage = useCallback(() => {
+    if (numImages <= 1) return;
+    setPage(([prevPage]) => [prevPage + 1, 1]);
+  }, [numImages]);
+
+  const prevImage = useCallback(() => {
+    if (numImages <= 1) return;
+    setPage(([prevPage]) => [prevPage - 1, -1]);
+  }, [numImages]);
+
+  const goToImage = useCallback((targetIndex) => {
+    if (targetIndex === imageIndex || numImages <= 1) return;
+    const diff = targetIndex - imageIndex;
+    const dir = diff > 0 ? 1 : -1;
+    setPage(([prevPage]) => [prevPage + diff, dir]);
+  }, [imageIndex, numImages]);
+
+  useEffect(() => {
+    if (!open) return;
+
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        handleClose();
+      } else if (e.key === 'ArrowRight') {
+        nextImage();
+      } else if (e.key === 'ArrowLeft') {
+        prevImage();
+      }
     };
 
-    const prevImage = () => {
-        setIndex((prev) => (prev - 1 + images.length) % images.length);
+    window.addEventListener('keydown', handleKeyDown);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = prevOverflow;
     };
-    
+  }, [open, handleClose, nextImage, prevImage]);
 
-    return (
-        <>
-            {open && (
-                <div ref={galeria} className="modal-galeria">
-                    <h2 className="galeria-title">Galeria</h2>
-                    {/* Botão fechar */}
-                    <div
-                    onClick={() => setOpen(false)}
-                    className="x-fechar"
-                    >
-                    ✕
-                    </div>
+  if (typeof document === 'undefined') return null;
 
-                    <ImageModal
-                        open={open}
-                        index={index}
-                        nextImage={nextImage}
-                        prevImage={prevImage}
-                    />
-                </div>
-            )}
-        </>
-    );
-}
+  return createPortal(
+    <AnimatePresence>
+      {open && currentProject && (
+        <motion.div
+          className="modal-overlay"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.28, ease: 'easeOut' }}
+          onClick={handleClose}
+          role="dialog"
+          aria-modal="true"
+        >
+          <motion.div
+            className="modal-galeria"
+            initial={{ opacity: 0, scale: 0.92, y: 25 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.92, y: 25 }}
+            transition={{ type: 'spring', stiffness: 350, damping: 28 }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Header da Galeria */}
+            <div className="modal-galeria-header">
+              <div className="modal-header-info">
+                <span className="modal-tag">Galeria do Projeto</span>
+                <h2 className="galeria-title">{currentProject.title}</h2>
+              </div>
+              <motion.button
+                type="button"
+                className="x-fechar"
+                onClick={handleClose}
+                whileHover={{ scale: 1.12, rotate: 90 }}
+                whileTap={{ scale: 0.92 }}
+                aria-label="Fechar galeria"
+              >
+                ✕
+              </motion.button>
+            </div>
 
-function ImageModal({ open, index, nextImage, prevImage }) {
-
-    return (
-        <AnimatePresence>
-        {open && (
-            <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="modal-pai"
-            >
-                <motion.div
-                    initial={{ scale: 0.9, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    exit={{ scale: 0.9, opacity: 0 }}
-                    className="modal-filha"
+            {/* Carrossel de Imagens */}
+            <div className="modal-galeria-body">
+              {numImages > 1 && (
+                <motion.button
+                  type="button"
+                  className="carousel-btn prev"
+                  onClick={prevImage}
+                  whileHover={{ scale: 1.12, x: -3 }}
+                  whileTap={{ scale: 0.9 }}
+                  aria-label="Imagem anterior"
                 >
+                  ◀
+                </motion.button>
+              )}
 
-                    {/* Carrossel */}
-                    <div className="modal-filha2">
-                    {/* Seta esquerda */}
-                        <span
-                            onClick={prevImage}
-                            className="seta-esquerda"
-                        >
-                            ◀
-                        </span>
+              <div className="carousel-viewport">
+                <AnimatePresence custom={direction} mode="popLayout" initial={false}>
+                  <motion.div
+                    key={page}
+                    custom={direction}
+                    variants={slideVariants}
+                    initial="enter"
+                    animate="center"
+                    exit="exit"
+                    drag="x"
+                    dragConstraints={{ left: 0, right: 0 }}
+                    dragElastic={0.65}
+                    onDragEnd={(_e, { offset, velocity }) => {
+                      const swipe = swipePower(offset.x, velocity.x);
+                      if (swipe < -swipeConfidenceThreshold || offset.x < -60) {
+                        nextImage();
+                      } else if (swipe > swipeConfidenceThreshold || offset.x > 60) {
+                        prevImage();
+                      }
+                    }}
+                    className="carousel-slide"
+                  >
+                    <img
+                      src={images[imageIndex]}
+                      alt={`${currentProject.title} - Imagem ${imageIndex + 1}`}
+                      className="carousel-image"
+                      draggable={false}
+                    />
+                  </motion.div>
+                </AnimatePresence>
+              </div>
 
-                        {/* Imagem */}
-                        <div className="modal-filha3">
-                            <AnimatePresence mode="wait">
-                            <motion.img
-                                key={images[index]}
-                                src={images[index]}
-                                alt="gallery"
-                                initial={{ opacity: 0, x: 40 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                exit={{ opacity: 0, x: -40 }}
-                                transition={{ duration: 0.35 }}
-                                className="width-image"
-                            />
-                            </AnimatePresence>
-                        </div>
+              {numImages > 1 && (
+                <motion.button
+                  type="button"
+                  className="carousel-btn next"
+                  onClick={nextImage}
+                  whileHover={{ scale: 1.12, x: 3 }}
+                  whileTap={{ scale: 0.9 }}
+                  aria-label="Próxima imagem"
+                >
+                  ▶
+                </motion.button>
+              )}
+            </div>
 
-                        {/* Seta direita */}
-                        <span
-                            onClick={nextImage}
-                            className="seta-direita"
-                        >
-                            ▶
-                        </span>
-                    </div>
+            {/* Rodapé da Galeria */}
+            <div className="modal-galeria-footer">
+              <div className="Indicador-img">
+                {imageIndex + 1} / {numImages}
+              </div>
 
-                    {/* Indicador */}
-                    <div className="Indicador-img">
-                    {index + 1} / {images.length}
-                    </div>
-                </motion.div>
-            </motion.div>
-        )}
-        </AnimatePresence>
-    );
+              {numImages > 1 && (
+                <div className="galeria-dots">
+                  {images.map((_, idx) => (
+                    <motion.button
+                      key={idx}
+                      type="button"
+                      onClick={() => goToImage(idx)}
+                      className={`galeria-dot ${idx === imageIndex ? 'active' : ''}`}
+                      whileHover={{ scale: 1.25 }}
+                      whileTap={{ scale: 0.9 }}
+                      aria-label={`Ir para a imagem ${idx + 1}`}
+                    />
+                  ))}
+                </div>
+              )}
+
+              <div className="modal-nav-hint">
+                <span>Navegue com setas ou arraste</span>
+              </div>
+            </div>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>,
+    document.body
+  );
 }

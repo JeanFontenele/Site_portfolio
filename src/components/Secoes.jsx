@@ -6,7 +6,6 @@ import { useGSAP } from '@gsap/react';
 import {ScrollTrigger} from "gsap/ScrollTrigger"
 import { motion, AnimatePresence } from "framer-motion";
 import GallerySection from './GallerySection'
-
 import html from '../assets/images/html5-azul.png'
 import css from '../assets/images/css3-azul.png'
 import javascript from '../assets/images/javascript-azul.png'
@@ -40,7 +39,7 @@ export default function Secoes({ sectionsRef }){
                     //markers: true,
                     start: "top 200px",
                     end: "bottom 800px",
-                    scrub: true
+                    scrub: false
                 }
             });
         }else if(window.innerWidth <= 500){
@@ -63,7 +62,6 @@ export default function Secoes({ sectionsRef }){
             //continuar ajustando a animação tanto no gsap quanto no css para ser mais rápida numa tela menor
             //dica: deixei o scrub false e precisar centralizar os elementos, ajustar o translate para os demais elementos da body para ser mais rápido
     },[])
-    console.log(window.innerWidth)
 
     useEffect(()=>{
         gsap.registerPlugin(ScrollTrigger)
@@ -74,9 +72,9 @@ export default function Secoes({ sectionsRef }){
                 scrollTrigger:{
                     trigger: targetRef2.current,
                     //markers: true,
-                    start: "top 200px",
+                    start: "top 300px",
                     end: "bottom 700px",
-                    scrub: true
+                    scrub: false
                 }
             });
         }else{
@@ -228,7 +226,7 @@ export default function Secoes({ sectionsRef }){
                     <a className="view-projeto" href="https://github.com/JeanFontenele/Projeto-site-de-arquitetura-e-design-de-interiores" target='_blank' rel="noopener noreferrer">Código Fonte</a>
                 </article>
 
-                <GallerySection projeto={projeto} />
+                <GallerySection projeto={projeto} onClose={() => setViewProjeto('')} />
                 
             </section>
 
