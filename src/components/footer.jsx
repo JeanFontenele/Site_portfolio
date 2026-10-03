@@ -5,6 +5,7 @@ import { AiOutlineLinkedin } from "react-icons/ai";
 import { FaGithub } from "react-icons/fa";
 
 export default function Footer({ sectionsRef }){
+
     return(
 
         <div>
