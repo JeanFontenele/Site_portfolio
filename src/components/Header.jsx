@@ -39,7 +39,7 @@ export default function Header({ onNavigate }) {
       <header className="hero-header">
         <div className='layer'></div>{/*layer*/}
           <nav className="nav">
-            <div style={{display:'flex',gap:'24px'}} className='container'>
+            <div style={{display:'flex'}} className='container'>
               <div style={{width:'50%'}} className="brand">Portfolio</div>
               
               <ul ref={menuNav} className={`nav-links ${open ? 'open' : ''}`}>
@@ -59,7 +59,7 @@ export default function Header({ onNavigate }) {
           </nav>
 
           
-          <video className='box-video' playsInline autoPlay loop muted>
+          <video width={100} height={100} className='box-video' playsInline autoPlay loop muted>
             <source src={video_header}/>
           </video>
           

@@ -226,6 +226,30 @@ export default function Secoes({ sectionsRef }){
                     <a className="view-projeto" href="https://github.com/JeanFontenele/Projeto-site-de-arquitetura-e-design-de-interiores" target='_blank' rel="noopener noreferrer">Código Fonte</a>
                 </article>
 
+                <article id='card1' className="project-card">
+                    <div style={{backgroundImage: `url(${projeto1})`}} className="project-thumb" aria-hidden="true" />
+                    <h3 className="project-name">Projeto Portal de Noticias</h3>
+                    <p className="project-desc">Portal de noticias feito com HTML/CSS e NodeJS.</p>
+                    <p onClick={()=>setViewProjeto('projeto1')} className="project-link">Visualizar Projeto</p>
+                    <a className="view-projeto" href="https://github.com/JeanFontenele/Projeto-portal-de-noticias/tree/main" target='_blank' rel="noopener noreferrer">Código Fonte</a>
+                </article>
+
+                <article id='card2' className="project-card">
+                    <div style={{backgroundImage: `url(${projeto3})`}} className="project-thumb" aria-hidden="true" />
+                    <h3 className="project-name">Projeto Dashboard</h3>
+                    <p className="project-desc">Dashboard de gestão financeira feita com HTML/CSS e PHP.</p>
+                    <p onClick={()=>setViewProjeto('projeto3')} className="project-link">Visualizar Projeto</p>
+                    <a className="view-projeto" href="https://github.com/JeanFontenele/Projeto-dashboard-administra-o-financeira" target='_blank' rel="noopener noreferrer">Código Fonte</a>
+                </article>
+
+                <article id='card3' className="project-card">
+                    <div style={{backgroundImage: `url(${projeto2})`}} className="project-thumb" aria-hidden="true" />
+                    <h3 className="project-name">Projeto Site de Arquitetura e Design</h3>
+                    <p className="project-desc">Site comercial de arquitetura e design de interiores.</p>
+                    <p onClick={()=>setViewProjeto('projeto2')} className="project-link">Visualizar Projeto</p>
+                    <a className="view-projeto" href="https://github.com/JeanFontenele/Projeto-site-de-arquitetura-e-design-de-interiores" target='_blank' rel="noopener noreferrer">Código Fonte</a>
+                </article>
+
                 <GallerySection projeto={projeto} onClose={() => setViewProjeto('')} />
                 
             </section>
