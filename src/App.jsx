@@ -2,6 +2,7 @@ import './indexGlobal.css'
 import Header from './components/Header'
 import Secoes from './components/Secoes'
 import Footer from './components/footer'
+import NetworkBackground from './components/NetworkBackground'
 import { useRef } from 'react'
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
 
   return (
     <div>
+      <NetworkBackground />
       <Header onNavigate={scrollToSection} />
       <Secoes sectionsRef={sectionsRef} />
       <Footer sectionsRef={sectionsRef} />

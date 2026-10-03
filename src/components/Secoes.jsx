@@ -131,128 +131,138 @@ export default function Secoes({ sectionsRef }){
     return(
 
         <div className="projects-section">
-            <section ref={targetRef} className='sobremim'>
-                <div ref={sectionsRef.sobre}></div>
-                <h2>Sobre Mim</h2>
-                <p>Sou desenvolvedor de sites e sistemas full-stack, com atuação no desenvolvimento de soluções completas, desde a interface até a lógica de negócio e integração com banco de dados. Desenvolvo projetos utilizando diferentes tecnologias, sempre analisando o contexto e escolhendo as ferramentas que melhor se adequam às necessidades de cada aplicação, buscando desempenho, escalabilidade e boa experiência do usuário.
-                
-                Atualmente, presto serviços para a TopSaúde Hub, uma empresa voltada para o setor de saúde suplementar, que oferece soluções e produtos de software para diversas empresas do ramo. Sou apaixonado por tecnologia, movido por aprendizado contínuo e pela busca constante por boas práticas de desenvolvimento. Gosto de transformar ideias em soluções funcionais, bem estruturadas e alinhadas às necessidades do negócio, sempre focando em código limpo, organização e evolução técnica.</p>
-            </section>{/*sobremim*/}
+            <div className='layer-secao'></div>
+            <div className='container-secoes'>
+                <section ref={targetRef} className='sobremim'>
+                    <div ref={sectionsRef.sobre}></div>
+                    <div className='container'>
+                        <h2>Sobre Mim</h2>
+                        <p>Sou desenvolvedor de sites e sistemas full-stack, com atuação no desenvolvimento de soluções completas, desde a interface até a lógica de negócio e integração com banco de dados. Desenvolvo projetos utilizando diferentes tecnologias, sempre analisando o contexto e escolhendo as ferramentas que melhor se adequam às necessidades de cada aplicação, buscando desempenho, escalabilidade e boa experiência do usuário.
+                        
+                        Atualmente, presto serviços para a TopSaúde Hub, uma empresa voltada para o setor de saúde suplementar, que oferece soluções e produtos de software para diversas empresas do ramo. Sou apaixonado por tecnologia, movido por aprendizado contínuo e pela busca constante por boas práticas de desenvolvimento. Gosto de transformar ideias em soluções funcionais, bem estruturadas e alinhadas às necessidades do negócio, sempre focando em código limpo, organização e evolução técnica.</p>
+                    </div>
+                </section>{/*sobremim*/}
 
-            <section ref={targetRef2} className='habilidades'>
-                <h2>Habilidades</h2>
+                <section ref={targetRef2} className='habilidades'>
+                    <div className='container'>
+                        <h2>Habilidades</h2>
 
-                <div className='grid'>
-                    <p>
-                        <img alt='html5' src={html}/>
-                        <br />
-                        HTML 5
-                    </p>
+                        <div className='grid'>
+                            <p>
+                                <img alt='html5' src={html}/>
+                                <br />
+                                HTML 5
+                            </p>
 
-                    <p>
-                        <img alt='css3' src={css}/>
-                        <br />
-                        CSS 3
-                    </p>
+                            <p>
+                                <img alt='css3' src={css}/>
+                                <br />
+                                CSS 3
+                            </p>
 
-                    <p>
-                        <img alt='javascript' src={javascript}/>
-                        <br />
-                        JavaScript
-                    </p>
+                            <p>
+                                <img alt='javascript' src={javascript}/>
+                                <br />
+                                JavaScript
+                            </p>
 
-                    <p>
-                        <img alt='nodejs' src={nodejs}/>
-                        <br />
-                        NodeJS
-                    </p>
+                            <p>
+                                <img alt='nodejs' src={nodejs}/>
+                                <br />
+                                NodeJS
+                            </p>
 
-                    <p>
-                        <img alt='php' src={php}/>
-                        <br />
-                        PHP
-                    </p>
+                            <p>
+                                <img alt='php' src={php}/>
+                                <br />
+                                PHP
+                            </p>
 
-                    <p>
-                        <img alt='mysql' src={mysql}/>
-                        <br />
-                        MySql
-                    </p>
+                            <p>
+                                <img alt='mysql' src={mysql}/>
+                                <br />
+                                MySql
+                            </p>
 
-                    <p>
-                        <img alt='reactjs' src={react}/>
-                        <br />
-                        ReactJS
-                    </p>
+                            <p>
+                                <img alt='reactjs' src={react}/>
+                                <br />
+                                ReactJS
+                            </p>
 
-                    <p>
-                        <img alt='mongodb' src={mongodb}/>
-                        <br />
-                        MongoDB
-                    </p>
+                            <p>
+                                <img alt='mongodb' src={mongodb}/>
+                                <br />
+                                MongoDB
+                            </p>
 
-                    <p>
-                        <img alt='wordpress' src={wordpress}/>
-                        <br />
-                        Wordpress
-                    </p>
-                </div>{/*grid*/}
-            </section>{/*habilidades*/}
+                            <p>
+                                <img alt='wordpress' src={wordpress}/>
+                                <br />
+                                Wordpress
+                            </p>
+                        </div>{/*grid*/}
+                    </div>
+                </section>{/*habilidades*/}
 
-            <h2 className="projects-title">Meus Projetos</h2>
-            <div ref={sectionsRef.projetos}></div>
-            <section ref={targetRef3} className="projects-grid">
-                <article id='card1' className="project-card">
-                    <div style={{backgroundImage: `url(${projeto1})`}} className="project-thumb" aria-hidden="true" />
-                    <h3 className="project-name">Projeto Portal de Noticias</h3>
-                    <p className="project-desc">Portal de noticias feito com HTML/CSS e NodeJS.</p>
-                    <p onClick={()=>setViewProjeto('projeto1')} className="project-link">Visualizar Projeto</p>
-                    <a className="view-projeto" href="https://github.com/JeanFontenele/Projeto-portal-de-noticias/tree/main" target='_blank' rel="noopener noreferrer">Código Fonte</a>
-                </article>
+            
+                <h2 className="projects-title">Meus Projetos</h2>
+                <div ref={sectionsRef.projetos}></div>
+                <div className='container'>
+                    <section ref={targetRef3} className="projects-grid">
+                        <article id='card1' className="project-card">
+                            <div style={{backgroundImage: `url(${projeto1})`}} className="project-thumb" aria-hidden="true" />
+                            <h3 className="project-name">Projeto Portal de Noticias</h3>
+                            <p className="project-desc">Portal de noticias feito com HTML/CSS e NodeJS.</p>
+                            <p onClick={()=>setViewProjeto('projeto1')} className="project-link">Visualizar Projeto</p>
+                            <a className="view-projeto" href="https://github.com/JeanFontenele/Projeto-portal-de-noticias/tree/main" target='_blank' rel="noopener noreferrer">Código Fonte</a>
+                        </article>
 
-                <article id='card2' className="project-card">
-                    <div style={{backgroundImage: `url(${projeto3})`}} className="project-thumb" aria-hidden="true" />
-                    <h3 className="project-name">Projeto Dashboard</h3>
-                    <p className="project-desc">Dashboard de gestão financeira feita com HTML/CSS e PHP.</p>
-                    <p onClick={()=>setViewProjeto('projeto3')} className="project-link">Visualizar Projeto</p>
-                    <a className="view-projeto" href="https://github.com/JeanFontenele/Projeto-dashboard-administra-o-financeira" target='_blank' rel="noopener noreferrer">Código Fonte</a>
-                </article>
+                        <article id='card2' className="project-card">
+                            <div style={{backgroundImage: `url(${projeto3})`}} className="project-thumb" aria-hidden="true" />
+                            <h3 className="project-name">Projeto Dashboard</h3>
+                            <p className="project-desc">Dashboard de gestão financeira feita com HTML/CSS e PHP.</p>
+                            <p onClick={()=>setViewProjeto('projeto3')} className="project-link">Visualizar Projeto</p>
+                            <a className="view-projeto" href="https://github.com/JeanFontenele/Projeto-dashboard-administra-o-financeira" target='_blank' rel="noopener noreferrer">Código Fonte</a>
+                        </article>
 
-                <article id='card3' className="project-card">
-                    <div style={{backgroundImage: `url(${projeto2})`}} className="project-thumb" aria-hidden="true" />
-                    <h3 className="project-name">Projeto Site de Arquitetura e Design</h3>
-                    <p className="project-desc">Site comercial de arquitetura e design de interiores.</p>
-                    <p onClick={()=>setViewProjeto('projeto2')} className="project-link">Visualizar Projeto</p>
-                    <a className="view-projeto" href="https://github.com/JeanFontenele/Projeto-site-de-arquitetura-e-design-de-interiores" target='_blank' rel="noopener noreferrer">Código Fonte</a>
-                </article>
+                        <article id='card3' className="project-card">
+                            <div style={{backgroundImage: `url(${projeto2})`}} className="project-thumb" aria-hidden="true" />
+                            <h3 className="project-name">Projeto Site de Arquitetura e Design</h3>
+                            <p className="project-desc">Site comercial de arquitetura e design de interiores.</p>
+                            <p onClick={()=>setViewProjeto('projeto2')} className="project-link">Visualizar Projeto</p>
+                            <a className="view-projeto" href="https://github.com/JeanFontenele/Projeto-site-de-arquitetura-e-design-de-interiores" target='_blank' rel="noopener noreferrer">Código Fonte</a>
+                        </article>
 
-                <article id='card1' className="project-card">
-                    <div style={{backgroundImage: `url(${projeto1})`}} className="project-thumb" aria-hidden="true" />
-                    <h3 className="project-name">Projeto Portal de Noticias</h3>
-                    <p className="project-desc">Portal de noticias feito com HTML/CSS e NodeJS.</p>
-                    <p onClick={()=>setViewProjeto('projeto1')} className="project-link">Visualizar Projeto</p>
-                    <a className="view-projeto" href="https://github.com/JeanFontenele/Projeto-portal-de-noticias/tree/main" target='_blank' rel="noopener noreferrer">Código Fonte</a>
-                </article>
+                        <article id='card1' className="project-card">
+                            <div style={{backgroundImage: `url(${projeto1})`}} className="project-thumb" aria-hidden="true" />
+                            <h3 className="project-name">Projeto Portal de Noticias</h3>
+                            <p className="project-desc">Portal de noticias feito com HTML/CSS e NodeJS.</p>
+                            <p onClick={()=>setViewProjeto('projeto1')} className="project-link">Visualizar Projeto</p>
+                            <a className="view-projeto" href="https://github.com/JeanFontenele/Projeto-portal-de-noticias/tree/main" target='_blank' rel="noopener noreferrer">Código Fonte</a>
+                        </article>
 
-                <article id='card2' className="project-card">
-                    <div style={{backgroundImage: `url(${projeto3})`}} className="project-thumb" aria-hidden="true" />
-                    <h3 className="project-name">Projeto Dashboard</h3>
-                    <p className="project-desc">Dashboard de gestão financeira feita com HTML/CSS e PHP.</p>
-                    <p onClick={()=>setViewProjeto('projeto3')} className="project-link">Visualizar Projeto</p>
-                    <a className="view-projeto" href="https://github.com/JeanFontenele/Projeto-dashboard-administra-o-financeira" target='_blank' rel="noopener noreferrer">Código Fonte</a>
-                </article>
+                        <article id='card2' className="project-card">
+                            <div style={{backgroundImage: `url(${projeto3})`}} className="project-thumb" aria-hidden="true" />
+                            <h3 className="project-name">Projeto Dashboard</h3>
+                            <p className="project-desc">Dashboard de gestão financeira feita com HTML/CSS e PHP.</p>
+                            <p onClick={()=>setViewProjeto('projeto3')} className="project-link">Visualizar Projeto</p>
+                            <a className="view-projeto" href="https://github.com/JeanFontenele/Projeto-dashboard-administra-o-financeira" target='_blank' rel="noopener noreferrer">Código Fonte</a>
+                        </article>
 
-                <article id='card3' className="project-card">
-                    <div style={{backgroundImage: `url(${projeto2})`}} className="project-thumb" aria-hidden="true" />
-                    <h3 className="project-name">Projeto Site de Arquitetura e Design</h3>
-                    <p className="project-desc">Site comercial de arquitetura e design de interiores.</p>
-                    <p onClick={()=>setViewProjeto('projeto2')} className="project-link">Visualizar Projeto</p>
-                    <a className="view-projeto" href="https://github.com/JeanFontenele/Projeto-site-de-arquitetura-e-design-de-interiores" target='_blank' rel="noopener noreferrer">Código Fonte</a>
-                </article>
+                        <article id='card3' className="project-card">
+                            <div style={{backgroundImage: `url(${projeto2})`}} className="project-thumb" aria-hidden="true" />
+                            <h3 className="project-name">Projeto Site de Arquitetura e Design</h3>
+                            <p className="project-desc">Site comercial de arquitetura e design de interiores.</p>
+                            <p onClick={()=>setViewProjeto('projeto2')} className="project-link">Visualizar Projeto</p>
+                            <a className="view-projeto" href="https://github.com/JeanFontenele/Projeto-site-de-arquitetura-e-design-de-interiores" target='_blank' rel="noopener noreferrer">Código Fonte</a>
+                        </article>
 
-                <GallerySection projeto={projeto} onClose={() => setViewProjeto('')} />
-                
-            </section>
+                        <GallerySection projeto={projeto} onClose={() => setViewProjeto('')} />
+                        
+                    </section>
+                </div>
+            </div>{/*container-layer*/}
 
         </div>
 
