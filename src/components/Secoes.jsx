@@ -207,8 +207,8 @@ export default function Secoes({ sectionsRef }){
 
             
                 <h2 className="projects-title">Meus Projetos</h2>
-                <div ref={sectionsRef.projetos}></div>
                 <div className='container'>
+                    <div ref={sectionsRef.projetos}></div>
                     <section ref={targetRef3} className="projects-grid">
                         <article id='card1' className="project-card">
                             <div style={{backgroundImage: `url(${projeto1})`}} className="project-thumb" aria-hidden="true" />
@@ -263,6 +263,7 @@ export default function Secoes({ sectionsRef }){
                     </section>
                 </div>
             </div>{/*container-layer*/}
+            <div ref={sectionsRef.contato}></div>
 
         </div>
 

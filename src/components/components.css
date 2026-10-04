@@ -172,7 +172,7 @@ html, body {
   align-items:center;
   justify-content:space-between;
   padding:60px 20px;
-   transition: 1s;
+  transition: 1s;
 }
 
 .conteudoHeader-show{
@@ -921,7 +921,7 @@ section.habilidades {
 
 footer {
   position: relative;
-  z-index: 2;
+  z-index: 2; 
 }
 
 

@@ -4,13 +4,13 @@ import { FaWhatsapp } from "react-icons/fa";
 import { AiOutlineLinkedin } from "react-icons/ai";
 import { FaGithub } from "react-icons/fa";
 
-export default function Footer({ sectionsRef }){
+export default function Footer(){
 
     return(
 
         <div>
             <footer>
-                <div ref={sectionsRef.contato} style={{maxWidth:'1200px'}} className='container'>
+                <div style={{maxWidth:'1200px'}} className='container'>
                     <h2>Contatos</h2>
                     <div className="contatos">
                         <div className='contato-single'>

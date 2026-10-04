@@ -16,7 +16,7 @@ function App() {
   const scrollToSection = (section) => {
     const element = sectionsRef[section].current;
     const elementSobre = (section == "sobre") ? sectionsRef[section].current : '' 
-    console.log(element)
+    console.log(element.offsetTop)
     if (element) {  
       if(elementSobre != ""){
         window.scrollTo({
@@ -25,7 +25,7 @@ function App() {
         });
       }else{
         window.scrollTo({
-          top: element.offsetTop + 100,
+          top: element.offsetTop + 600,
           behavior: "smooth",
         });
       }
@@ -39,7 +39,7 @@ function App() {
       <NetworkBackground />
       <Header onNavigate={scrollToSection} />
       <Secoes sectionsRef={sectionsRef} />
-      <Footer sectionsRef={sectionsRef} />
+      <Footer />
     </div>
   )
 }
