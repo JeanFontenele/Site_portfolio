@@ -18,9 +18,10 @@ import wordpress from '../assets/images/wordpress-azul.png'
 import projeto1 from '../assets/images/projeto1.png'
 import projeto2 from '../assets/images/projeto2.png'
 import projeto3 from '../assets/images/projeto3.png'
-import dashboard from '../assets/images/secao_meus_projetos/dashboard.png'
-import dashboard2 from '../assets/images/secao_meus_projetos/dashboard2.png'
-import dashboard3 from '../assets/images/secao_meus_projetos/dashboard3.png'
+import projeto4 from '../assets/images/projeto4.png'
+import projeto5 from '../assets/images/projeto5.png'
+import projeto6 from '../assets/images/projeto6.png'
+
 
 export default function Secoes({ sectionsRef }){
 
@@ -221,7 +222,7 @@ export default function Secoes({ sectionsRef }){
                         <article id='card2' className="project-card">
                             <div style={{backgroundImage: `url(${projeto3})`}} className="project-thumb" aria-hidden="true" />
                             <h3 className="project-name">Projeto Dashboard</h3>
-                            <p className="project-desc">Dashboard de gestão financeira feita com HTML/CSS e PHP.</p>
+                            <p className="project-desc">Dashboard de gestão financeira com informações da bolsa de valores feita com HTML/CSS e PHP.</p>
                             <p onClick={()=>setViewProjeto('projeto3')} className="project-link">Visualizar Projeto</p>
                             <a className="view-projeto" href="https://github.com/JeanFontenele/Projeto-dashboard-administra-o-financeira" target='_blank' rel="noopener noreferrer">Código Fonte</a>
                         </article>
@@ -235,26 +236,26 @@ export default function Secoes({ sectionsRef }){
                         </article>
 
                         <article id='card1' className="project-card">
-                            <div style={{backgroundImage: `url(${projeto1})`}} className="project-thumb" aria-hidden="true" />
-                            <h3 className="project-name">Projeto Portal de Noticias</h3>
-                            <p className="project-desc">Portal de noticias feito com HTML/CSS e NodeJS.</p>
-                            <p onClick={()=>setViewProjeto('projeto1')} className="project-link">Visualizar Projeto</p>
+                            <div style={{backgroundImage: `url(${projeto4})`}} className="project-thumb" aria-hidden="true" />
+                            <h3 className="project-name">Projeto Agência Web</h3>
+                            <p className="project-desc">Site de agência web e marketing digital</p>
+                            <p onClick={()=>setViewProjeto('projeto4')} className="project-link">Visualizar Projeto</p>
                             <a className="view-projeto" href="https://github.com/JeanFontenele/Projeto-portal-de-noticias/tree/main" target='_blank' rel="noopener noreferrer">Código Fonte</a>
                         </article>
 
                         <article id='card2' className="project-card">
-                            <div style={{backgroundImage: `url(${projeto3})`}} className="project-thumb" aria-hidden="true" />
-                            <h3 className="project-name">Projeto Dashboard</h3>
-                            <p className="project-desc">Dashboard de gestão financeira feita com HTML/CSS e PHP.</p>
-                            <p onClick={()=>setViewProjeto('projeto3')} className="project-link">Visualizar Projeto</p>
+                            <div style={{backgroundImage: `url(${projeto5})`}} className="project-thumb" aria-hidden="true" />
+                            <h3 className="project-name">Projeto Site Institucional</h3>
+                            <p className="project-desc">Site de empresa desenvolvedora de softwares</p>
+                            <p onClick={()=>setViewProjeto('projeto5')} className="project-link">Visualizar Projeto</p>
                             <a className="view-projeto" href="https://github.com/JeanFontenele/Projeto-dashboard-administra-o-financeira" target='_blank' rel="noopener noreferrer">Código Fonte</a>
                         </article>
 
                         <article id='card3' className="project-card">
-                            <div style={{backgroundImage: `url(${projeto2})`}} className="project-thumb" aria-hidden="true" />
-                            <h3 className="project-name">Projeto Site de Arquitetura e Design</h3>
-                            <p className="project-desc">Site comercial de arquitetura e design de interiores.</p>
-                            <p onClick={()=>setViewProjeto('projeto2')} className="project-link">Visualizar Projeto</p>
+                            <div style={{backgroundImage: `url(${projeto6})`}} className="project-thumb" aria-hidden="true" />
+                            <h3 className="project-name">Projeto Site E-commerce</h3>
+                            <p className="project-desc">Site de e-commerce para produtos de tecnologia</p>
+                            <p onClick={()=>setViewProjeto('projeto6')} className="project-link">Visualizar Projeto</p>
                             <a className="view-projeto" href="https://github.com/JeanFontenele/Projeto-site-de-arquitetura-e-design-de-interiores" target='_blank' rel="noopener noreferrer">Código Fonte</a>
                         </article>
 

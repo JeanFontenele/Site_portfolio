@@ -45,3 +45,7 @@ function App() {
 }
 
 export default App
+
+/*
+  TODO: falta melhorar animação do menu nav da header ao clicar no botão de exibição em telas mobile para estar completo para deploy.
+*/

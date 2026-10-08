@@ -784,7 +784,6 @@ div.copyrighter{
     margin-top: 90px;
   }
   
-  .nav-links{display:none}
   .nav-links.open{display:flex;flex-direction:column;background:rgba(0,0,0,0.9);}
 
   .layer{
@@ -807,13 +806,7 @@ div.copyrighter{
   .container{
     min-width: 300px;
   }
-  .nav-links{
-    opacity: 0;
-    left: 0;
-    transform: translateX(-100%);
-    transition: all 0.4s ease-in-out; 
-    pointer-events: none;
-  }
+  
   .box-hamburguer{
     padding-right: 3%;
   }
@@ -859,7 +852,7 @@ div.copyrighter{
   }
 
   .habilidades .grid p img{
-    width: 50%;
+    width: 38%;
   }
 
   .projects-grid{

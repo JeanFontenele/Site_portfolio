@@ -2,9 +2,11 @@ import { useState, useEffect, useCallback } from 'react'
 import { createPortal } from 'react-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 
-import dashboard from '../assets/images/secao_meus_projetos/dashboard.png'
-import dashboard2 from '../assets/images/secao_meus_projetos/dashboard2.png'
-import dashboard3 from '../assets/images/secao_meus_projetos/dashboard3.png'
+import dashboard from '../assets/images/secao_meus_projetos/dashboard.png';
+import dashboard2 from '../assets/images/secao_meus_projetos/dashboard2.png';
+import dashboard3 from '../assets/images/secao_meus_projetos/dashboard3.png';
+import dashboard4 from '../assets/images/secao_meus_projetos/dashboard4.png';
+import dashboard5 from '../assets/images/secao_meus_projetos/dashboard5.png';
 import portal_de_noticias from '../assets/images/secao_meus_projetos/portal_de_noticias.png'
 import portal_de_noticias2 from '../assets/images/secao_meus_projetos/portal_de_noticias2.png'
 import portal_de_noticias3 from '../assets/images/secao_meus_projetos/portal_de_noticias3.png'
@@ -18,6 +20,25 @@ import site_arquitetura4 from '../assets/images/secao_meus_projetos/site_arquite
 import site_arquitetura5 from '../assets/images/secao_meus_projetos/site_arquitetura5.png'
 import site_arquitetura6 from '../assets/images/secao_meus_projetos/site_arquitetura6.png'
 import site_arquitetura7 from '../assets/images/secao_meus_projetos/site_arquitetura7.png'
+import site_agencia_web from '../assets/images/secao_meus_projetos/site_agencia_web.png';
+import site_agencia_web2 from '../assets/images/secao_meus_projetos/site_agencia_web2.png';
+import site_agencia_web3 from '../assets/images/secao_meus_projetos/site_agencia_web3.png';
+import site_agencia_web4 from '../assets/images/secao_meus_projetos/site_agencia_web4.png';
+import site_agencia_web5 from '../assets/images/secao_meus_projetos/site_agencia_web5.png';
+import site_agencia_web6 from '../assets/images/secao_meus_projetos/site_agencia_web6.png';
+import site_institucional from '../assets/images/secao_meus_projetos/site_institucional.png';
+import site_institucional2 from '../assets/images/secao_meus_projetos/site_institucional2.png';
+import site_institucional3 from '../assets/images/secao_meus_projetos/site_institucional3.png';
+import site_institucional4 from '../assets/images/secao_meus_projetos/site_institucional4.png';
+import site_institucional5 from '../assets/images/secao_meus_projetos/site_institucional5.png';
+import site_institucional6 from '../assets/images/secao_meus_projetos/site_institucional6.png';
+import site_institucional7 from '../assets/images/secao_meus_projetos/site_institucional7.png';
+import site_institucional8 from '../assets/images/secao_meus_projetos/site_institucional8.png';
+import site_institucional9 from '../assets/images/secao_meus_projetos/site_institucional9.png';
+import e_commerce_tecnologia from '../assets/images/secao_meus_projetos/e-commerce_tecnologia.png';
+import e_commerce_tecnologia2 from '../assets/images/secao_meus_projetos/e-commerce_tecnologia2.png';
+import e_commerce_tecnologia3 from '../assets/images/secao_meus_projetos/e-commerce_tecnologia3.png';
+import e_commerce_tecnologia4 from '../assets/images/secao_meus_projetos/e-commerce_tecnologia4.png';
 
 const projectData = {
   projeto1: {
@@ -50,11 +71,53 @@ const projectData = {
   projeto3: {
     id: 'projeto3',
     title: 'Projeto Dashboard Financeiro',
-    description: 'Dashboard interativo para gestão e administração financeira em PHP',
+    description: 'Dashboard interativo para gestão e administração financeira, com informações da bolsa de valores em PHP',
     images: [
       dashboard,
       dashboard2,
       dashboard3,
+      dashboard4,
+      dashboard5
+    ],
+  },
+  projeto4: {
+    id: 'projeto4',
+    title: 'Projeto Agência Web',
+    description: 'Site de agência web e marketing digital',
+    images: [
+      site_agencia_web,
+      site_agencia_web2,
+      site_agencia_web3,
+      site_agencia_web4,
+      site_agencia_web5,
+      site_agencia_web6
+    ],
+  },
+  projeto5: {
+    id: 'projeto5',
+    title: 'Projeto Site Institucional',
+    description: 'Site de empresa desenvolvedora de softwares',
+    images: [
+      site_institucional,
+      site_institucional2,
+      site_institucional3,
+      site_institucional4,
+      site_institucional5,
+      site_institucional6,
+      site_institucional7,
+      site_institucional8,
+      site_institucional9
+    ],
+  },
+  projeto6: {
+    id: 'projeto6',
+    title: 'Projeto Site E-commerce',
+    description: 'Site de e-commerce para produtos de tecnologia',
+    images: [
+      e_commerce_tecnologia,
+      e_commerce_tecnologia2,
+      e_commerce_tecnologia3,
+      e_commerce_tecnologia4
     ],
   },
 };
