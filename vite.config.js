@@ -10,5 +10,5 @@ export default defineConfig({
       },
     }),
   ],
-  base: "/Portfolio-profissional",
+  base: "/Site_portfolio",
 })
