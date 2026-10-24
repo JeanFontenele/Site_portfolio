@@ -74,8 +74,10 @@ export default function Header({ onNavigate }) {
               <div className="hero-actions">
                 <a onClick={() => onNavigate("projetos")} className="btn primary" href="#projects">Ver projetos</a>
                 <div id="wrap-btn">
-                  <a className="btn" href="Site_portfolio/src/assets/Curriculo.pdf" download>Download CV</a>
-                  <a className="btn" href="Site_portfolio/src/assets/Curriculum_in_english.pdf" download>Download CV (English)</a>
+                  <a className="btn" href="Site_portfolio/src/assets/Curriculo.pdf" target='_blank'>Download CV</a>
+                  <a className="btn" href="Site_portfolio/src/assets/Curriculum_in_english.pdf" target='_blank'>Download CV (English)</a>
+                  {/*<a className="btn" href="Site_portfolio/src/assets/Curriculo.pdf" download>Download CV</a>
+                  <a className="btn" href="Site_portfolio/src/assets/Curriculum_in_english.pdf" download>Download CV (English)</a>*/}
                 </div>
               </div>
             </div>
