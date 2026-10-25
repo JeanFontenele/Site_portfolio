@@ -59,7 +59,7 @@ export default function Header({ onNavigate }) {
         </nav>
 
         
-        <video width={100} height={100} className='box-video' playsInline autoPlay loop muted>
+        <video width={100} height={100} className='box-video' playsInline autoPlay loop muted webkit-playsinline preload="auto">
           <source src={video_header}/>
         </video>
         
